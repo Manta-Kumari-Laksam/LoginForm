@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Form</title>
+	<style type="text/css">
+		@keyframes ani{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+
+		@keyframes img_ani{
+			0%{
+				transform: translate(0px,-20px);				
+				opacity: 0;
+			}
+			75%{
+				transform: translate(0px,10px);
+				opacity: 1;
+			}
+			100%{
+				transform: translate(0px,0px);
+			}
+		}
+
+		body{
+			margin: 0px;
+		}
+
+		.main{
+			justify-content: center;
+			align-items: center;
+			background-color: black;
+			display: flex;
+			flex-direction: column;
+		}
+		.container{
+			height: 50%;
+			width: 30%;
+			box-sizing: border-box;
+			flex: 1;
+		}
+
+	  	.container form {
+			border: 3px solid white;
+			color: white;
+			font-size: 25px;
+			background-image: url("bg10.jpg");
+			background-repeat: no-repeat;
+			height:60vh;
+			background-size: cover;
+			animation-name: ani;
+			animation-duration: 7s;
+			animation-fill-mode: forwards;
+			box-shadow: 0px 0px 20px blue;
+		}
+
+		 img{
+		 	margin: 24px 0 12px 0;
+            flex: 1;
+			width: 20%;
+  			border-radius: 50%;
+  			animation-name: img_ani;
+  			animation-duration: 2s;
+  			animation-fill-mode: forwards;
+		}
+		.btn{
+			border: none;
+			background-color: #ffffcc;
+			padding: 12px 24px;
+			cursor: pointer;
+			font-size: 15px;
+			margin-left: 5px;
+		}
+		.input{
+			  width: 100%;
+  			  padding: 12px 20px;
+ 			  margin: 8px 0px;
+  			  border: 3px solid #ccc;
+  			  box-sizing: border-box;
+		}
+		@media(max-width: 700px)
+		{
+			.container,.imgcontainer{
+				flex-direction: column;
+			}
+		}
+	</style>
+</head>
+<body>
+		<div class="main">
+		
+			<img src="login1.png" alt="login image">
+		
+
+		
+		<div class="container">
+			<form name="myForm" action="success.html" method="post" onsubmit="return myValidation()">
+			<label><b>Username</b></label>  <br>
+			<input type="text" name="uname" placeholder="Enter Username" class="input"><br>
+ 			<label><b>Password</b></label> <br>
+ 			<input type="password" name="pwd" placeholder="Enter Password" class="input"><br>
+ 			<label><b>Designation</b></label><br>
+ 			<select name="user">
+ 				<option value="Select">--Select--</option>
+ 				<option value="Student">Student</option>
+ 				<option value="Staff">Staff</option>
+ 				<option value="Admin">Admin</option>
+ 			</select>
+ 			<br><br>
+ 			<input type="submit" value="Login" class="btn">
+ 			</form>
+		</div>
+	</div>
+
+ <script type="text/javascript">
+	function myValidation(){
+ 	var username=document.forms["myForm"]["uname"].value; 
+ 	var password=document.forms["myForm"]["pwd"];
+ 	var user=document.forms["myForm"]["user"].value;
+    var flag=true;
+ 	if(username== ""){
+ 		alert("Name cannot be empty!");
+ 		flag= false;
+ 	}
+ 	
+ 	// password.onkeyup= function{
+ 		var lcase= /[a-z]/g;
+ 		var Ucase= /[A-Z]/g;
+ 		var numbers= /[0-9]/g;
+ 		// var lcase= /![a-z]/g;
+ 		if(password.value=="")
+ 		{
+ 			alert("password cannot be empty!");
+ 		    flag= false;
+ 		}
+ 		else if(password.value.match(lcase) && password.value.match(Ucase) && password.value.match(numbers) && password.value.length > 8)
+ 		{
+ 			flag=true;
+ 		}
+ 		else{
+ 			alert("Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters");
+ 			flag=false;
+ 		}
+ 	
+
+ 	return flag;
+ }
+ </script>
+</body>
+</html>
